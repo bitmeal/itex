@@ -14,13 +14,13 @@ if [[ -z "$PKGS" ]]; then
 	echo "No packages found..." >&2
 	exit 1
 elif [[ $(wc -w <<< "$PKGS") -eq 1 ]]; then
-	tlmgr --usermode install "$@" "$PKGS"
+	tlmgr install "$@" "$PKGS"
 else
 	select package in $PKGS; do
 		INDEX=1
 		for p in $PKGS; do
 			if [ $((INDEX++)) -eq $REPLY ]; then
-				tlmgr --usermode install "$@" "$p"
+				tlmgr install "$@" "$p"
 			fi
 		done
 		break;
