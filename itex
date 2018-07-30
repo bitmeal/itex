@@ -7,7 +7,7 @@ proc reallyInstall { name } {
 	} else {
 		spawn $tlmgri $targs $name
 	}
-	interact
+	expect eof
 	lassign [wait] pid spawnid os_error_flag value
 	if {$value != 0} {
 		send_user "
